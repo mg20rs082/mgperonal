@@ -1,0 +1,148 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shreya ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 40px;
+}
+
+.typing {
+    font-size: 1.4em;
+    width: 80%;
+    margin: auto;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(40), blink .7s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 80% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+.buttons {
+    margin-top: 40px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 25px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#yes {
+    background: white;
+    color: #ff4d6d;
+}
+
+#no {
+    background: black;
+    color: white;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+.photo {
+    width: 250px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    color: white;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Shreya ❤️</h1>
+
+<p class="typing">
+You are the best thing that ever happened to me...
+</p>
+
+<div class="buttons">
+    <button id="yes" onclick="showLove()">Yes ❤️</button>
+    <button id="no" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<div id="loveMessage" class="hidden">
+    <h2>I knew it! 😍</h2>
+    <p>
+        Shreya, I love you more than words can explain.  
+        You are my happiness, my peace, and my forever. 💖
+    </p>
+
+    <img src="your-photo.jpg" class="photo">
+
+    <p><b>– Mani ❤️</b></p>
+</div>
+
+<!-- music -->
+<audio autoplay loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function moveNo() {
+    let btn = document.getElementById("no");
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+function showLove() {
+    document.getElementById("loveMessage").classList.remove("hidden");
+}
+
+/* floating hearts */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
+```
