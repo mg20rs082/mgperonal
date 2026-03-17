@@ -86,6 +86,24 @@ button {
 }
 </style>
 </head>
+    <script>
+function moveNo() {
+    let btn = document.getElementById("no");
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+function showLove() {
+    document.getElementById("loveMessage").classList.remove("hidden");
+
+    // play music after click
+    let music = document.getElementById("bgMusic");
+    music.play();
+}
+</script>
+
+</body>
+</html>
 
 <body>
 
