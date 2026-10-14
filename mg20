@@ -1,0 +1,265 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Neha ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffc3a0);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    padding: 25px 15px 50px;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-top: 35px;
+    font-size: clamp(2rem, 7vw, 3rem);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin: 25px auto;
+}
+
+.heart {
+    font-size: 55px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+button {
+    padding: 13px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#yes {
+    background: white;
+    color: #ff3864;
+    font-weight: bold;
+}
+
+#no {
+    background: #333;
+    color: white;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+#loveMessage {
+    margin-top: 35px;
+    padding: 20px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    animation: appear 0.8s ease;
+}
+
+#loveMessage p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.photo {
+    display: block;
+    width: min(280px, 90%);
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin: 20px auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.music-box {
+    margin: 25px auto;
+    padding: 15px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+}
+
+audio {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 12px;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Hey Neha ❤️</h1>
+
+    <div class="heart">💖</div>
+
+    <p class="subtitle">
+        Every love story is beautiful, but ours is my favourite.
+        You make my world brighter just by being in it. 🥰
+    </p>
+
+    <h2>Neha, do you love me? 💌</h2>
+
+    <button id="yes" type="button" onclick="showLove()">
+        Yes ❤️
+    </button>
+
+    <button id="no" type="button"
+        onmouseenter="moveNo()"
+        onclick="moveNo()">
+        No 😜
+    </button>
+
+    <div id="loveMessage" class="hidden">
+        <h2>Yay! I knew it! 😍❤️</h2>
+
+        <p>
+            Neha, you are my happiness, my favourite person,
+            and the reason behind so many of my smiles.
+            No matter how far apart we are, you will always
+            have a special place in my heart. 💕
+        </p>
+
+        <!-- Optional: upload a photo named our-photo.jpg -->
+        <img
+            src="our-photo.jpg"
+            alt="A special memory"
+            class="photo"
+            onerror="this.style.display='none'"
+        >
+
+        <p>
+            I choose you today, tomorrow, and every day. ❤️
+        </p>
+
+        <h2>Forever yours,</h2>
+        <h2>Mani ❤️</h2>
+    </div>
+
+    <div class="music-box">
+        <p>🎵 A little song for you, Neha 🎵</p>
+
+        <!-- Upload your real MP3 as your-music.mp3 -->
+        <audio id="bgMusic" controls loop preload="metadata">
+            <source src="./your-music.mp3" type="audio/mpeg">
+            Your browser cannot play this audio file.
+        </audio>
+
+        <p id="musicStatus">
+            If music doesn't start automatically, press Play above.
+        </p>
+    </div>
+
+</div>
+
+<script>
+function moveNo() {
+    const btn = document.getElementById("no");
+
+    // Keep the button inside the visible screen.
+    btn.style.position = "fixed";
+
+    const maxX = Math.max(0, window.innerWidth - btn.offsetWidth - 10);
+    const maxY = Math.max(0, window.innerHeight - btn.offsetHeight - 10);
+
+    btn.style.left = Math.random() * maxX + "px";
+    btn.style.top = Math.random() * maxY + "px";
+}
+
+function showLove() {
+    document.getElementById("loveMessage").classList.remove("hidden");
+
+    const music = document.getElementById("bgMusic");
+    const status = document.getElementById("musicStatus");
+
+    music.play()
+        .then(() => {
+            status.textContent = "Playing a song just for you ❤️";
+        })
+        .catch(() => {
+            status.textContent =
+                "Tap Play in the music player above to start the song 🎵";
+        });
+}
+
+// Create floating hearts.
+setInterval(() => {
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+    heart.textContent = ["❤️", "💖", "💕", "💗", "💘"][
+        Math.floor(Math.random() * 5)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
+```
